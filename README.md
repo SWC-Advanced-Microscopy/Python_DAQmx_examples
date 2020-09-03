@@ -13,6 +13,16 @@ pip install nidaqmx
 ```
 
 
-# See also
+## Notes on hardware
+Features differ by DAQ device.
+e.g. max sample rates differ, not all devices have clocked digital lines, etc. 
+It is possible some examples will not work on certain devices.
+If you are using a USB DAQ, keep in mind that the devices are optimised for data throughput not response latency. 
+You don't want to service tasks (e.g. pull data off the board) more than about 5 times a second. 
+Consequently you should plan to perform larger operations on a USB DAQ than on a PCI or PCIe-based device. 
+
+
+
+## See also
 * [A wrapper for PyDAQmx](https://github.com/petebachant/daqmx)
 * [Equivalent examples for MATLAB](https://github.com/tenss/MATLAB_DAQmx_examples)
