@@ -1,7 +1,7 @@
 '''
  Demonstration of simultaneous analog input and output
 
- pynidaqmx.mixed.basicAOandAI.py
+ pynidaqmx.mixed.AOandAI_sharedClock.py
 
  Description:
   This example demonstrates how to continuously run data acquisition (AI) 
@@ -11,17 +11,15 @@
   So we need to make one task for AI, one for AO, and start them synchronously with an 
   internal trigger.
 
-  Note that in this example the AI and AO do not share a clock. They are set to run at 
-  at the same sample rate, but they won't be running on the same clock. This can create 
-  jitter and, for some desired sample rates, continuously variable phase delays. See: 
-  pynidaqmx.mixed.AOandAI_sharedClock.py
+  In this example the AI and AO share a clock. They both start at the same time and
+  acquire data at exactly the same rate. 
  
  
   Wiring instructions:
   connect AI0 to AO0 on the DAQ device you are working on. 
  
   You may run this example by changing to the directory containing the file and
-  running: python basicAOandAI.py
+  running: python AOandAI_sharedClock.py
 
 '''
 
@@ -31,7 +29,7 @@ import numpy as np
 from pyqtgraph.Qt import QtGui, QtCore
 import pyqtgraph as pg
 
-class basicAOandAI():
+class AOandAI_sharedClock():
 
     # Class properties
 
@@ -103,14 +101,19 @@ class basicAOandAI():
         '''
 
         # * Configure the sampling rate and the number of samples
+        #   ALSO: set source of the clock to be AO clock is where this example differs from basicAOandAI.py
+        # ===> SET UP THE SHARED CLOCK: Use the AO sample clock for the AI task <===
+        # The supplied sample rate for the AI task is a nominal value. It will in fact use the AO sample clock. 
         #   C equivalent - DAQmxCfgSampClkTiming
         #   http://zone.ni.com/reference/en-XX/help/370471AE-01/daqmxcfunc/daqmxcfgsampclktiming/
         #   More details at: "help(task.cfg_samp_clk_timing)
         #   https://nidaqmx-python.readthedocs.io/en/latest/constants.html
         self._points_to_plot = round(self.sample_rate*0.1)
         self.h_task_ai.timing.cfg_samp_clk_timing(self.sample_rate, \
+                                    source= '/%s/ao/SampleClock' % self.dev_name, \
                                     samps_per_chan=self._points_to_plot, \
                                     sample_mode=AcquisitionType.CONTINUOUS)
+
 
 
         # * Registera a callback funtion to be run every N samples
@@ -218,8 +221,8 @@ class basicAOandAI():
 
 
 if __name__ == '__main__':
-    print('\nRunning demo for basicAOandAI\n\n')
-    MIXED = basicAOandAI()
+    print('\nRunning demo for AOandAI_sharedClock\n\n')
+    MIXED = AOandAI_sharedClock()
     MIXED.set_up_tasks()
     MIXED.setup_plot()
     MIXED.start_acquisition()
