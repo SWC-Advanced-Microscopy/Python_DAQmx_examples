@@ -1,7 +1,7 @@
 '''
  Example showing hardware-timed continuous analog output without using a callback function
 
- function pynidaqmx.ao.hardwareContinuousVoltageNoCallback
+ pynidaqmx.ao.hardwareContinuousVoltageNoCallback
 
  Purpose
  Demonstrates how to do hardware-timed continuous analog output without a callback function. 
@@ -24,7 +24,7 @@
 
  You can also run from the system command line:
  - cd to path containing the function
- - python hardwareContinuousVoltageNoCallback to run the demo
+ - python hardwareContinuousVoltageNoCallback.py to run the demo
 
   Rob Campbell - SWC, 2020
 

@@ -25,7 +25,7 @@
 
  You can also run from the system command line:
  - cd to path containing the function
- - python hardwareContinuousVoltageCallback to run the demo
+ - python hardwareContinuousVoltageCallback.py to run the demo
 
  Rob Campbell - SWC, 2020
 
