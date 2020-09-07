@@ -67,15 +67,6 @@ class basicAOandAI():
             self.set_up_tasks()
 
 
-    def top_up_buffer(self, hTask, event_type, num_samples, callback_data):
-            '''
-            This method is the callback for the analog output task.
-            It re-fills the output buffer when it is half empty
-            '''
-            self.h_task.write(self.waveform, timeout=5)
-            return 0
-
-
     def set_up_tasks(self):
         '''
         Creates AI and AO tasks. Builds a waveform that is played out through AO using
