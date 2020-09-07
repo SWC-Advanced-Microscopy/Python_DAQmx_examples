@@ -46,8 +46,6 @@ class hardwareContinuousVoltageNoCallback():
     dev_name = 'Dev1'      # The name of the DAQ device as shown in MAX
     task_name = 'hardAO'   # A string that will provide a label for the task
     physical_channel = 0   # A scalar or an array with the channel numbers
-    min_voltage = -10      # Channel input range minimum
-    max_voltage = 10       # Channel input range maximum
 
 
     # Task configuration
@@ -82,9 +80,7 @@ class hardwareContinuousVoltageNoCallback():
         #   http://zone.ni.com/reference/en-XX/help/370471AE-01/daqmxcfunc/daqmxcreateaovoltagechan/
         # https://nidaqmx-python.readthedocs.io/en/latest/ao_channel_collection.html
         connect_at = '%s/ao%d' % (self.dev_name,self.physical_channel)
-        self.h_task.ao_channels.add_ao_voltage_chan(connect_at, \
-                                                    min_val = self.min_voltage, \
-                                                    max_val = self.max_voltage)
+        self.h_task.ao_channels.add_ao_voltage_chan(connect_at)
 
 
  
