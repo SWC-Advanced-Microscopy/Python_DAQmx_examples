@@ -87,5 +87,5 @@ class OnDemand():
 
 
 if __name__ == '__main__':
-    AO = on_demand(autoconnect=True)
+    AO = OnDemand(autoconnect=True)
     AO.run_demo()
