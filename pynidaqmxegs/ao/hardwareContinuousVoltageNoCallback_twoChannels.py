@@ -99,8 +99,8 @@ class hardwareContinuousVoltageNoCallback_twoChannels():
                                                sample_mode = AcquisitionType.CONTINUOUS)
 
 
-        # * Do not allow sample regeneration: i.e. the buffer contents will be play only once
-        # When the read buffer becomes empty, the card will not return to the start and re-output the same values. 
+        # * Allow sample regeneration: i.e. the buffer contents will be play continuously
+        # When the read buffer becomes empty, the card will return to the start and re-output the same values. 
         # http://zone.ni.com/reference/en-XX/help/370471AE-01/mxcprop/attr1453/
         # For more on DAQmx write properties: http://zone.ni.com/reference/en-XX/help/370469AG-01/daqmxprop/daqmxwrite/
         # For a discussion on regeneration mode in the context of analog output tasks see:
