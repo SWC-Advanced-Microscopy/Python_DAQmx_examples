@@ -44,6 +44,7 @@ def hardwareContinuousVoltageWithCallBackPyQtPlot():
     pg.setConfigOptions(antialias=True)
     tPlot = win.addPlot(title="Scrolling plot")
     curve0 = tPlot.plot(pen='y')
+    tPlot.setRange(yRange=(-1,1))
     curve1 = tPlot.plot(pen='g')
 
     def pullDataAndPlot(tTask, event_type, num_samples, callback_data):
