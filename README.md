@@ -25,5 +25,5 @@ Consequently you should plan to perform larger operations on a USB DAQ than on a
 
 ## See also
 * [A wrapper for PyDAQmx](https://github.com/petebachant/daqmx)
-* [Equivalent examples for MATLAB](https://github.com/tenss/MATLAB_DAQmx_examples)
-* [Python-based laser-scanning microscopy examples](https://github.com/tenss/SimplePyScanner)
+* [Equivalent examples for MATLAB](https://github.com/SWC-Advanced-Microscopy/MATLAB_DAQmx_examples)
+* [Python-based laser-scanning microscopy examples](https://github.com/SWC-Advanced-Microscopy/SimplePyScanner)
