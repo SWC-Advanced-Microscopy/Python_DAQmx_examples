@@ -94,5 +94,5 @@ class HardwareBasic():
 
 
 if __name__ == '__main__':
-    AO = on_demand(autoconnect=True)
+    AO = HardwareBasic(autoconnect=True)
     AO.run_demo()
